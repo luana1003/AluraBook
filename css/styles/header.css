@@ -1,0 +1,181 @@
+.cabecalho__menu-hamburguer{
+    width: 1.5rem;
+    height: 1.5rem;
+    background-image: url("../assets/Menu.svg");
+    display: inline-block; /*Serve para permitir ajustes na altura e na largura.*/
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+.container__botao:checked~.container__rotulo {
+    background: var(--azul-degrade);
+}
+
+.cabecalho{
+    background-color: var(--branco);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /*Libera a opção de colocar outros atributos como top, left e bottom*/
+}
+
+.container{
+    display: flex;
+    align-items: center;
+}
+
+.container__imagem{
+    padding: 1rem;
+}
+
+.lista-menu{
+    display: none;
+    position: absolute; /*Se movimenta de acordo com outro que veio antes ou que é o pai que tenha position diferente de static. Como cabecalho é relative (diferente de static) e é o elemento pai, .lista-menu se movimenta conforme cabecalho*/
+    top: 100%;
+    width: 60vw;
+}
+
+/*Detectando se o checkbox é chamado. O "checked" (combinador css) procura o elemento com aquela classe ou id */
+.container__botao:checked ~ .lista-menu{
+    display: block;
+}
+
+.lista-menu__titulo, .lista-menu__item{
+    padding: 1rem;
+    background-color: var(--branco);
+}
+
+.lista-menu__titulo{
+    color: var(--laranja);
+    font-weight: 700;
+}
+
+.lista-menu__link{
+    background: var(--azul-degrade);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+}
+
+.container__botao{
+    display: none;
+}
+
+.container__titulo{
+    display: none;
+}
+
+.opcoes{
+    display: none;
+}
+
+.container__texto{
+    display: none;
+}
+
+.container__botao:checked~.container__rotulo > .cabecalho__menu-hamburguer{
+    background-image: url("../assets/Menu\ Aberto.svg");
+}
+
+.container__botao:checked~.container__rotulo{
+    background: var(--azul-degrade);
+}
+
+/*Layout tablet*/
+@media screen and (min-width: 1024px) {
+
+    .container__titulo,
+    .container__titulo--negrito {
+        font-family: var(--fonte-secundario);
+        font-size: 30px;
+    }
+
+    .container__titulo {
+        font-weight: 400;
+        display: block;
+    }
+
+    .container__titulo--negrito {
+        font-weight: 700;
+    }
+
+    .opcoes {
+        display: flex;
+    }
+
+    .opcoes__item {
+        padding: 0 1em;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: var(--preto);
+    }
+
+    .lista-menu__link{
+        text-decoration: none;
+        color: var(--preto);
+    }
+    
+    .opcoes__link {
+        text-decoration: none;
+        color: var(--preto);
+    }
+
+    .container__imagem-transparente {
+        display: none;
+    }
+
+    .cabecalho__menu-hamburguer {
+        display: none;
+    }
+
+    .opcoes__botao:checked ~.lista-menu {
+        display: block;
+        width: auto;
+    }
+
+    .opcoes__botao {
+        display: none;
+    }
+
+    .opcoes__botao:checked~.opcoes__rotulo>.opcoes__item {
+        background: var(--azul-degrade);
+        color: var(--branco);
+    }
+
+    .opcoees__item {
+        padding: 2em 1em;
+    }
+
+    .lista-menu__item:hover {
+        background: var(--azul-degrade);
+    }
+
+    .lista-menu__item:hover>.lista-menu__link {
+        -webkit-text-fill-color: var(--branco);
+        text-decoration: none;
+    }
+
+}
+
+@media screen and (min-width: 1728px) {
+    .container__link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: var(--preto);
+    }
+
+    .cabecalho {
+        padding: 0 2em;
+    }
+
+    .opcoes {
+        margin-right: auto;
+    }
+
+    .container__texto {
+        display: block;
+    }
+}
